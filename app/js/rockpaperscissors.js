@@ -25,14 +25,14 @@ function getPlayerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-    return (move === !null) || getInput();
+    return move || getInput();
 }
 
 function getComputerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-    return (move === !null) || randomPlay();
+    return move || randomPlay();
 }
 
 function getWinner(playerMove,computerMove) {
@@ -57,7 +57,10 @@ function playToFive() {
     var playerWins = 0;
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
+    while ((playerWins < 5) && (computerWins < 5)) {
+        if (getWinner(getPlayerMove, getComputerMove) == 'player') {playerWins += 1;}
+        else if (getWinner(getPlayerMove, getComputerMove) == 'computer') {computerWins += 1;}
+    }
     return [playerWins, computerWins];
 }
 
